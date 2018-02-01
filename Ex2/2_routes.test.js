@@ -7,5 +7,12 @@ describe('test server: ', () => {
       done();
     });
   });
+
+  test('Should return the payload: ', (done) => {
+    Server.inject('/xyz', (response) => {
+      expect(response.payload).toBe('Hello xyz');
+      done();
+    });
+  });
 });
 
