@@ -8,5 +8,14 @@ describe('test server: ', () => {
       done();
     });
   });
+
+  test('result: ', (done) => {
+    const indexFile = fs.readFileSync('./Ex3/index.html');
+    const data = indexFile.toString();
+    Server.inject('/', (response) => {
+      expect(response.result.toString()).toBe(data);
+      done();
+    });
+  });
 });
 
