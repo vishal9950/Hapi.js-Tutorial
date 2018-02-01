@@ -8,4 +8,11 @@ describe('Test server: ', () => {
       done();
     });
   });
+
+  test('Should return the response back: ', (done) => {
+    Server.inject('/', (response) => {
+      expect(response.payload).toBe('Hello hapi');
+      done();
+    });
+  });
 });
