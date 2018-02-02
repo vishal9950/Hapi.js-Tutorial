@@ -14,5 +14,12 @@ describe('test status code: ', () => {
       done();
     });
   });
+
+  test('should not work for if no such path: ', (done) => {
+    Server.inject('http://localhost:8080/chicken', (response) => {
+      expect(response.statusCode).toBe(404);
+      done();
+    });
+  });
 });
 
