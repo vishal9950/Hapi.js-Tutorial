@@ -1,6 +1,7 @@
 const Vision = require('vision');
 const Hapi = require('hapi');
 const handlebar = require('handlebars');
+// const path = require('path');
 
 const server = new Hapi.Server();
 
@@ -9,14 +10,17 @@ server.register(Vision, (err) => {
 });
 server.connection({
   host: 'localhost',
-  //   port: Number(process.argv[2] || 8080),
-  port: 8080,
+  port: Number(process.argv[2] || 8080),
+  // port: 8080,
 });
+
+server.path(__dirname);
+
 server.views({
   engines: {
     html: handlebar,
   },
-  path: '/Users/vishalvasnani/MDL/training/makemehapi_Ex/Ex5/templates',
+  path: 'templates',
 });
 server.route({
   path: '/',
@@ -26,10 +30,10 @@ server.route({
   },
 });
 
-if (!module.parents) {
-  server.start(() => {
-    console.log('Server created at:', server.info.uri);
-  });
-}
+// if (!module.parents) {
+server.start(() => {
+  console.log('Server created at:', server.info.uri);
+});
+// }
 
-module.exports = server;
+// module.exports = server;
