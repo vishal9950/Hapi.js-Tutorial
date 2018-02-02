@@ -7,4 +7,11 @@ describe('Test server: ', () => {
       done();
     });
   });
+
+  test('Response result: ', (done) => {
+    Server.inject('/', (response) => {
+      expect(response.result).toBe('Gur Chefhvg bs Uncv-arff');
+      done();
+    });
+  });
 });
