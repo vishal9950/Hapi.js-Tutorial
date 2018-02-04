@@ -1,5 +1,6 @@
 const Server = require('./7_help');
 const fs = require('fs');
+const helper = require('./helpers/helper');
 
 describe('Test server: ', () => {
   test('Should return statusCode 200: ', (done) => {
@@ -18,3 +19,16 @@ describe('Test server: ', () => {
   });
 });
 
+describe('Test helpers: ', () => {
+  test('Should return a string with name and suffix concatnated: ', () => {
+    const context = {
+      data: {
+        root: {
+          name: 'xyz',
+          suffix: 'abc',
+        },
+      },
+    };
+    expect(helper(context)).toBe('xyzabc');
+  });
+});
