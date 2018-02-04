@@ -10,8 +10,8 @@ server.register(Vision, (err) => {
 });
 server.connection({
   host: 'localhost',
-  port: Number(process.argv[2] || 8080),
-  // port: 8080,
+  // port: Number(process.argv[2] || 8080),
+  port: 8080,
 });
 
 server.path(__dirname);
@@ -30,10 +30,10 @@ server.route({
   },
 });
 
-// if (!module.parents) {
-server.start(() => {
-  console.log('Server created at:', server.info.uri);
-});
-// }
+if (!module.parents) {
+  server.start(() => {
+    console.log('Server created at:', server.info.uri);
+  });
+}
 
-// module.exports = server;
+module.exports = server;
