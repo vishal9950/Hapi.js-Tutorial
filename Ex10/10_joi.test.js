@@ -12,4 +12,16 @@ describe('Test server: ', () => {
       done();
     });
   });
+
+  test('Should return result: ', (done) => {
+    const options = {
+      url: '/login',
+      payload: JSON.stringify({ isGuest: true, password: 'fg' }),
+      method: 'POST',
+    };
+    Server.inject(options, (response) => {
+      expect(response.result).toBe('login successful');
+      done();
+    });
+  });
 });
